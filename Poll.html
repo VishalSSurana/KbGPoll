@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poll</title>
+<style>
+/* Style the container */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+
+.button {
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width:100px;
+}
+</style>
+</head>
+<body>
+<div>
+    <div class="row">
+      <div class="col-75">
+        
+  <button id="A" class="button">A</button>
+ <br>
+    
+  <button id="B" class="button" >B</button>
+ <br>
+    
+  <button id="C" class="button">C</button>
+  
+<br>
+  <button id="D" class="button">D</button>
+ 
+      </div>
+    </div>
+</div>
+<script>
+class staticValue{
+	static count_A=0;
+static count_B=0;
+static count_C=0;
+static count_D=0;
+}	
+	
+document.addEventListener('click', (e) => {
+    let element = e.target;
+
+    if(element.tagName == "BUTTON"){ 
+	document.querySelectorAll('button').forEach(elem => {
+  		elem.disabled = true;
+	}); 
+if( element.id=="A"){
+	staticValue.count_A++;
+}  
+if( element.id=="B"){
+	staticValue.count_B++;
+}
+if( element.id=="C"){
+	staticValue.count_C++;
+}
+if( element.id=="D"){
+	staticValue.count_D++;
+}   
+        document.getElementById(element.id).style.backgroundColor="red" ;
+	console.log(staticValue.count_A,staticValue.count_B,staticValue.count_C,staticValue.count_D);
+  }
+});
+
+</script>
+</body>
+</html>
